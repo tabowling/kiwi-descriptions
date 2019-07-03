@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<image schemaversion="6.8" name="LimeJeOS-Fedora-29.0">
+<image schemaversion="6.8" name="F29-JeOS">
     <description type="system">
-        <author>Marcus Schaefer</author>
-        <contact>ms@suse.de</contact>
+        <author>Terry Bowling</author>
+        <contact>tbowling@redhat.com</contact>
         <specification>Fedora 29 JeOS</specification>
     </description>
     <preferences>
@@ -16,19 +16,23 @@
         <timezone>UTC</timezone>
         <rpm-check-signatures>false</rpm-check-signatures>
         <type image="iso" flags="overlay" hybrid="true" firmware="uefi" hybridpersistent_filesystem="ext4" hybridpersistent="true"/>
-        <type image="vmx" primary="true" filesystem="ext4" bootloader="grub2" kernelcmdline="selinux=targeted" firmware="efi"/>
+        <type image="vmx" format="qcow2" primary="true" filesystem="xfs" bootloader="grub2" kernelcmdline="selinux=targeted" firmware="uefi">
+		<systemdisk name="Terry">
+			<volume name="@root" freespace="2G"/>
+			<volume name="home" size="1G" label="home"/>
+			<volume name="swap" size="1G" label="swap"/>
+			<volume name="var" size="1G" label="var"/>
+		</systemdisk>
+	</type>
     </preferences>
     <users>
-        <user password="$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0" home="/root" name="root" groups="root"/>
+        <user password="$6$KMsbVpsD1pcV9GK5$9XBXgO8d.fsGELDfBFO1AyGsF9k.E09lQCMGcHjsB8/y/XNCaFWqhzgT1N/0uY3x9bNMnDIKTHu6g/RWoMTHd/" home="/root" name="root" groups="root"/>
     </users>
     <repository type="rpm-md" alias="Fedora29">
         <source path="http://download.fedoraproject.org/pub/fedora/linux/releases/29/Everything/x86_64/os"/>
     </repository>
     <repository type="rpm-md" alias="Fedora29-updates">
         <source path="http://download.fedoraproject.org/pub/fedora/linux/updates/29/Everything/x86_64"/>
-    </repository>
-    <repository type="rpm-md" priority="1" alias="kiwi-common-boot">
-        <source path="obs://Virtualization:Appliances:Builder/Fedora_29"/>
     </repository>
     <packages type="image">
         <namedCollection name="network-server"/>
@@ -39,17 +43,21 @@
         <package name="grub2-breeze-theme"/>
         <package name="selinux-policy-targeted"/>
         <package name="dhclient"/>
+        <package name="lvm2"/>
+        <package name="device-mapper"/>
     </packages>
     <packages type="iso">
         <package name="dracut-kiwi-live"/>
+        <package name="grub2-efi-x64-cdboot"/>
     </packages>
     <packages type="bootstrap">
         <package name="filesystem"/>
         <package name="basesystem"/>
         <package name="grub2-efi-x64"/>
         <package name="grub2-efi-x64-modules"/>
-        <package name="shim-x64"/>
+        <package name="shim-signed-x64"/>
         <package name="syslinux"/>
         <package name="syslinux-efi64"/>
     </packages>
 </image>
+
