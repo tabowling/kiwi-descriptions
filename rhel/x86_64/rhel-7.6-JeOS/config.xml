@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<image schemaversion="6.8" name="JeOS-RHEL-7.6">
+<image schemaversion="6.8" name="RHEL-7.6-JeOS">
     <description type="system">
         <author>Terry Bowling</author>
         <contact>tbowling@redhat.com</contact>

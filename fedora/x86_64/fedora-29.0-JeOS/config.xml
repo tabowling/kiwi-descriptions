@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<image schemaversion="6.8" name="F29-JeOS">
+<image schemaversion="6.8" name="fedora-29.0-JeOS">
     <description type="system">
         <author>Terry Bowling</author>
         <contact>tbowling@redhat.com</contact>
