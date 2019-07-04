@@ -23,7 +23,7 @@
         <timezone>UTC</timezone>
         <rpm-check-signatures>false</rpm-check-signatures>
         <type image="iso" flags="overlay" hybrid="true" firmware="uefi" hybridpersistent_filesystem="ext4" hybridpersistent="true"/>
-        <type image="vmx" primary="true" filesystem="xfs" kernelcmdline="rhgb" bootloader="grub2" firmware="uefi">
+        <type image="vmx" format="qcow2" primary="true" filesystem="xfs" kernelcmdline="rhgb" bootloader="grub2" firmware="uefi">
                 <systemdisk name="Terry">
                         <volume name="@root" freespace="2G"/>
                         <volume name="home" size="1G" label="home"/>
